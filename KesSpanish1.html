@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keslyn GPT Spanish Flashcard Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    button {
+      margin: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #flashcard {
+      font-size: 24px;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Spanish Flashcard Game</h1>
+  <div id="flashcard"></div>
+  <button id="showAnswer">Show Answer</button>
+  <button id="nextCard">Next Card</button>
+
+  <script>
+    const vocabulary = [
+      { english: "How are you?", spanish: "¿Que Tal?" },
+      { english: "and you?", spanish: "¿y tu?" },
+      { english: "very good", spanish: "Muy bien" },
+      { english: "fine", spanish: "bien" },
+      { english: "hello", spanish: "hola" },
+      { english: "thanks", spanish: "gracias" },
+      { english: "my name is ______", spanish: "me llamo _____" },
+      { english: "and you, what is your name?", spanish: "¿y tú cómo te llamas?" },
+      { english: "Where are you from?", spanish: "¿De dónde eres?" },
+      { english: "I'm from Spain.", spanish: "Soy de España." },
+      // ... add the remaining vocabulary items here
+    ];
+
+    let currentCard = 0;
+    const flashcard = document.getElementById("flashcard");
+    const showAnswerBtn = document.getElementById("showAnswer");
+    const nextCardBtn = document.getElementById("nextCard");
+
+    function displayCard() {
+      flashcard.innerHTML = vocabulary[currentCard].english;
+    }
+
+    function showAnswer() {
+      flashcard.innerHTML = vocabulary[currentCard].spanish;
+    }
+
+    function nextCard() {
+      currentCard = (currentCard + 1) % vocabulary.length;
+      displayCard();
+    }
+
+    showAnswerBtn.addEventListener("click", showAnswer);
+    nextCardBtn.addEventListener("click", nextCard);
+
+    displayCard();
+  </script>
+</body>
+</html>
